@@ -98,4 +98,12 @@ module.exports = {
             // ...
         });
     },
+    ok: function (req, res) {
+        // res.ok()
+        //Enviar una respuesta 200 ( "OK") de vuelta al cliente.
+        return res.ok({
+            nombre: 'Jonathan',
+            occupation: 'desarrollador'
+        });
+    },
 };

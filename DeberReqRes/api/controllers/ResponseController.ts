@@ -92,12 +92,23 @@ module.exports = {
         return res.ok(Spuncher);
       });
   },
-  notFound: function (req, res) {
+  notFound:(req, res)=>{
     //res.notFound()
     // Añadir cumplaños de Spuncher a una base de datos:
     Mascota.findOne()
+      .where({nombre: 'Rocky'})
+      .exec(function(err, Rocky) {
       if (err) return res.serverError(err);
+      if (!Rocky) return res.notFound(undefined,'Mascota/la-mascota-ha-sido-movida');
       // ...
     })
+  },
+  ok:(req,res)=>{
+    // res.ok()
+    //Enviar una respuesta 200 ( "OK") de vuelta al cliente.
+    return res.ok({
+      nombre: 'Jonathan',
+      occupation: 'desarrollador'
+    });
   },
 };
