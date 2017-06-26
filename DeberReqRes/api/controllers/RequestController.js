@@ -1,11 +1,3 @@
 /**
- * RequestController
- *
- * @description :: Server-side logic for managing Requests
- * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
+ * Created by visitante on 26/06/2017.
  */
-
-module.exports = {
-	
-};
-
