@@ -121,4 +121,13 @@ module.exports = {
         // return res.send(500, { error: 'Algo salio mal' });
         return res.send(404, 'Lo siento, No lo pudimos encontarr!');
     },
+    serverError: function (req, res) {
+        // res.serverError()
+        //Envía un 500 respuesta ( "Error del servidor") de vuelta al cliente que indica que algún tipo de error del servidor se produjo (es decir, el error no es culpa del agente de usuario que solicita).
+        // return res.serverError(
+        //   'No se pudo contactar con la Pagina',
+        //   'Response/serverError/editar' //poner la ruta de una pagina personalizada
+        // );
+        return res.serverError('No se pudo contactar con la Pagina');
+    },
 };
