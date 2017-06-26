@@ -143,4 +143,9 @@ module.exports = {
         res.type('json');
         return res.send('Cobecera  cambiada a json');
     },
+    view: function (req, res) {
+        // res.view()
+        //Responder con una página HTML.
+        return res.view('/Response/view');
+    },
 };
