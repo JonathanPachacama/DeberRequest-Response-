@@ -139,5 +139,11 @@ module.exports = {
     res.status(404);
     return res.send('oops');
   },
-
+  type:(req,res)=>{
+    // res.type()
+    //Establece la cabecera de respuesta "Content-Type" a la especificada type.
+    res.set('Cabecera','hola');
+    res.type('json');
+    return res.send('Cobecera  cambiada a json');
+  },
 };
