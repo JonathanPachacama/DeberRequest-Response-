@@ -71,18 +71,31 @@ module.exports = {
     },
     location: function (req, res) {
         //res.location()
-        res.location('http://ejemplo_Location.com');
+        res.location('http://ejemplo9.com');
         return res.json('Locacion establecida');
     },
     negotiate: function (req, res) {
         //res.negotiate()
         // Añadir cumplaños de Spuncher a una base de datos:
-        Mascota.update({ nombre: 'rocky' })
+        Mascota.update({ nombre: 'Spuncher' })
             .set({ birthday: new Date('01/01/2010') })
-            .exec(function (err, rocky) {
+            .exec(function (err, Spuncher) {
             if (err)
                 return res.negotiate(err);
-            return res.ok(rocky);
+            return res.ok(Spuncher);
+        });
+    },
+    notFound: function (req, res) {
+        //res.notFound()
+        // Añadir cumplaños de Spuncher a una base de datos:
+        Mascota.findOne()
+            .where({ nombre: 'Rocky' })
+            .exec(function (err, Rocky) {
+            if (err)
+                return res.serverError(err);
+            if (!Rocky)
+                return res.notFound(undefined, 'Mascota/la-mascota-ha-sido-movida');
+            // ...
         });
     },
 };

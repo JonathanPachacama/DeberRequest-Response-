@@ -92,4 +92,12 @@ module.exports = {
         return res.ok(Spuncher);
       });
   },
+  notFound: function (req, res) {
+    //res.notFound()
+    // Añadir cumplaños de Spuncher a una base de datos:
+    Mascota.findOne()
+      if (err) return res.serverError(err);
+      // ...
+    })
+  },
 };
