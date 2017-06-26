@@ -133,5 +133,11 @@ module.exports = {
     // );
     return res.serverError('No se pudo contactar con la Pagina');
   },
+  status:(req,res)=>{
+    // res.status()
+    //Ajuste el código de estado de esta respuesta.
+    res.status(404);
+    return res.send('oops');
+  },
 
 };
