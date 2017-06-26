@@ -111,4 +111,14 @@ module.exports = {
         //Redirigir al usuario-agente solicitante a la dirección URL absoluta o relativa dada.
         return res.redirect('http://google.com');
     },
+    send: function (req, res) {
+        // res.send()
+        //Enviar una respuesta sencilla. statusCodepor defecto es 200 ( "OK").
+        //return res.send({ usuario: 'jonathan' });
+        //return res.send([1,2,3]);
+        //return res.send('some html');
+        //return res.send(200);
+        // return res.send(500, { error: 'Algo salio mal' });
+        return res.send(404, 'Lo siento, No lo pudimos encontarr!');
+    },
 };
