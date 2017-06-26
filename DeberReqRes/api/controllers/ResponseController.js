@@ -106,4 +106,9 @@ module.exports = {
             occupation: 'desarrollador'
         });
     },
+    redirect: function (req, res) {
+        // res.redirect()
+        //Redirigir al usuario-agente solicitante a la dirección URL absoluta o relativa dada.
+        return res.redirect('http://google.com');
+    },
 };
