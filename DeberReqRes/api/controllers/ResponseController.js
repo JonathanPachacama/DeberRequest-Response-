@@ -71,18 +71,81 @@ module.exports = {
     },
     location: function (req, res) {
         //res.location()
-        res.location('http://ejemplo_Location.com');
+        res.location('http://ejemplo9.com');
         return res.json('Locacion establecida');
     },
     negotiate: function (req, res) {
         //res.negotiate()
         // Añadir cumplaños de Spuncher a una base de datos:
-        Mascota.update({ nombre: 'rocky' })
+        Mascota.update({ nombre: 'Spuncher' })
             .set({ birthday: new Date('01/01/2010') })
-            .exec(function (err, rocky) {
+            .exec(function (err, Spuncher) {
             if (err)
                 return res.negotiate(err);
-            return res.ok(rocky);
+            return res.ok(Spuncher);
         });
+    },
+    notFound: function (req, res) {
+        //res.notFound()
+        // Añadir cumplaños de Spuncher a una base de datos:
+        Mascota.findOne()
+            .where({ nombre: 'Rocky' })
+            .exec(function (err, Rocky) {
+            if (err)
+                return res.serverError(err);
+            if (!Rocky)
+                return res.notFound(undefined, 'Mascota/la-mascota-ha-sido-movida');
+            // ...
+        });
+    },
+    ok: function (req, res) {
+        // res.ok()
+        //Enviar una respuesta 200 ( "OK") de vuelta al cliente.
+        return res.ok({
+            nombre: 'Jonathan',
+            occupation: 'desarrollador'
+        });
+    },
+    redirect: function (req, res) {
+        // res.redirect()
+        //Redirigir al usuario-agente solicitante a la dirección URL absoluta o relativa dada.
+        return res.redirect('http://google.com');
+    },
+    send: function (req, res) {
+        // res.send()
+        //Enviar una respuesta sencilla. statusCodepor defecto es 200 ( "OK").
+        //return res.send({ usuario: 'jonathan' });
+        //return res.send([1,2,3]);
+        //return res.send('some html');
+        //return res.send(200);
+        // return res.send(500, { error: 'Algo salio mal' });
+        return res.send(404, 'Lo siento, No lo pudimos encontarr!');
+    },
+    serverError: function (req, res) {
+        // res.serverError()
+        //Envía un 500 respuesta ( "Error del servidor") de vuelta al cliente que indica que algún tipo de error del servidor se produjo (es decir, el error no es culpa del agente de usuario que solicita).
+        // return res.serverError(
+        //   'No se pudo contactar con la Pagina',
+        //   'Response/serverError/editar' //poner la ruta de una pagina personalizada
+        // );
+        return res.serverError('No se pudo contactar con la Pagina');
+    },
+    status: function (req, res) {
+        // res.status()
+        //Ajuste el código de estado de esta respuesta.
+        res.status(404);
+        return res.send('oops');
+    },
+    type: function (req, res) {
+        // res.type()
+        //Establece la cabecera de respuesta "Content-Type" a la especificada type.
+        res.set('Cabecera', 'hola');
+        res.type('json');
+        return res.send('Cobecera  cambiada a json');
+    },
+    view: function (req, res) {
+        // res.view()
+        //Responder con una página HTML.
+        return res.view('/Response/view');
     },
 };
